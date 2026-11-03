@@ -5,7 +5,7 @@ Use this project to build intuition by developing an app from the ground up. Lea
 ## Topics to learn
 
 - **APIs:** HTTP methods, status codes, request validation, authentication, pagination, and API design.
-- **Databases:** SQL, schema design, indexes, transactions, and migrations. Practice by persisting conversations or user preferences.
+- **Databases:** SQL, schema design, indexes, transactions, and migrations. Practice by persisting conversations or user preferences. For the first persistence feature, use Redis and learn its key-value model, persistence options, and tradeoffs; keep SQL as a separate topic to learn afterward.
 - **Testing:** Unit tests, integration tests, mocking external services, and understanding what each test protects.
 - **Git and code review:** Branches, small commits, pull requests, resolving conflicts, and explaining tradeoffs.
 - **Docker and deployment:** Build an image, configure environment variables and secrets, and deploy a small service.
@@ -18,12 +18,16 @@ Use this project to build intuition by developing an app from the ground up. Lea
 ## Project learning order
 
 1. **Tests and CI**
-2. **SQL and persistence**
+2. **Redis and persistence**
 3. **Docker and deployment**
 4. **Logging and security**
 5. **AI evaluations**
 
 APIs, testing, Git, and code review are ongoing foundations throughout these steps. Learn system design as the app grows. Docker comes before Kubernetes; Kubernetes can follow once deploying a container feels familiar.
+
+### Step 1 guide
+
+Use [CoGuard's CI/CD pipeline guide](https://www.coguard.io/post/ci-cd-pipeline) as a reference for gradually expanding automated checks. Its examples cover tests and coverage, formatting and linting, static analysis, Docker, secrets, and infrastructure scanning. Adapt the ideas to this project's Python/FastAPI stack and add them in roadmap order instead of copying the entire pipeline at once. Coverage is a signal about which code ran during tests; the tests still need to check meaningful behavior.
 
 ## Hands-on interview practice
 

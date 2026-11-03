@@ -14,7 +14,9 @@ The health endpoint is available at `http://127.0.0.1:8000/health` and returns `
 ## Run tests
 
 ```bash
-python -m pytest
+python -m pytest --cov=jaarvi_app --cov-report=term-missing --cov-report=html
 ```
 
-GitHub Actions runs this test suite on every push and pull request.
+The terminal shows the coverage percentage and any uncovered lines. The detailed HTML report is at `htmlcov/index.html`.
+
+GitHub Actions runs the tests with coverage on every push and pull request, then uploads the HTML report as a `coverage-report` artifact. Open the workflow run in the **Actions** tab, download that artifact, unzip it, and open the report's `index.html`.
