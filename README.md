@@ -5,8 +5,9 @@ A small web app that grows alongside the [learning roadmap](LEARNING_ROADMAP.md)
 ## Run locally
 
 ```bash
-python -m pip install -e ".[test]"
-uvicorn jaarvi_app.main:app --reload
+pipx install poetry
+poetry install --with test
+poetry run uvicorn jaarvi_app.main:app --reload
 ```
 
 The health endpoint is available at `http://127.0.0.1:8000/health` and returns `{"status":"ok"}`.
@@ -14,7 +15,7 @@ The health endpoint is available at `http://127.0.0.1:8000/health` and returns `
 ## Run tests
 
 ```bash
-python -m pytest --cov=jaarvi_app --cov-report=term-missing --cov-report=html
+poetry run python -m pytest --cov=jaarvi_app --cov-report=term-missing --cov-report=html
 ```
 
 The terminal shows the coverage percentage and any uncovered lines. The detailed HTML report is at `htmlcov/index.html`.

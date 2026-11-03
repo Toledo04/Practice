@@ -1,6 +1,6 @@
 [build-system]
-requires = ["setuptools>=68"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
 
 [project]
 name = "jaarvi-learning-app"
@@ -12,15 +12,13 @@ dependencies = [
     "uvicorn[standard]>=0.27,<1.0",
 ]
 
-[project.optional-dependencies]
-test = [
-    "httpx2",
-    "pytest>=8.0,<9.0",
-    "pytest-cov>=6.0,<8.0",
-]
+[tool.poetry]
+packages = [{ include = "jaarvi_app" }]
 
-[tool.setuptools.packages.find]
-include = ["jaarvi_app*"]
+[tool.poetry.group.test.dependencies]
+httpx2 = "*"
+pytest = ">=8.0,<9.0"
+pytest-cov = ">=6.0,<8.0"
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

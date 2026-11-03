@@ -14,11 +14,13 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-          cache: pip
+          cache: poetry
+      - name: Install Poetry
+        run: pipx install poetry==2.5.1
       - name: Install project and test dependencies
-        run: python -m pip install -e ".[test]"
+        run: poetry install --with test
       - name: Run tests with coverage
-        run: python -m pytest --cov=jaarvi_app --cov-report=term-missing --cov-report=html
+        run: poetry run python -m pytest --cov=jaarvi_app --cov-report=term-missing --cov-report=html
       - name: Upload HTML coverage report
         if: always()
         uses: actions/upload-artifact@v7
