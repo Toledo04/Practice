@@ -43,3 +43,31 @@ jobs:
         run: npm run lint
       - name: Build frontend
         run: npm run build
+
+  docker:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Build API image
+        run: docker build -t jaarvi-api:test .
+      - name: Start API container
+        run: docker run -d --name jaarvi-api-test -p 8000:8000 jaarvi-api:test
+      - name: Integration test the running API
+        run: |
+          for attempt in $(seq 1 20); do
+            if response=$(curl --fail --silent http://localhost:8000/health); then
+              if [ "$response" = '{"status":"ok"}' ]; then
+                echo "Container returned the expected health response."
+                exit 0
+              fi
+              echo "Unexpected health response: $response" >&2
+              exit 1
+            fi
+            sleep 1
+          done
+          docker logs jaarvi-api-test
+          exit 1
+      - name: Stop API container
+        if: always()
+        run: docker rm --force jaarvi-api-test
