@@ -1,0 +1,35 @@
+:root {
+  font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+  color: #20172b;
+  background: #fcfbfe;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  --ink: #20172b;
+  --muted: #766e80;
+  --line: #e9e5ef;
+  --surface: #fff;
+  --purple: #8153c8;
+  --purple-dark: #6540a5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+  min-height: 100vh;
+  margin: 0;
+}
+
+button,
+code {
+  font-family: inherit;
+}
+
+code {
+  font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+}

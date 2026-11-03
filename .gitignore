@@ -1,0 +1,14 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Build output
+build/
+dist/
+
+# JavaScript dependencies
+node_modules/
