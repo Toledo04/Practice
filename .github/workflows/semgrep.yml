@@ -1,0 +1,21 @@
+name: Semgrep
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  semgrep:
+    name: Scan
+    runs-on: ubuntu-latest
+    container:
+      image: semgrep/semgrep
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Run Semgrep Community Edition scan
+        run: semgrep scan --config auto
