@@ -110,7 +110,7 @@ function App() {
       </section>
 
       <footer className="footer">
-        <span>Built in small, explainable steps.</span>
+        <span>Built in big, explainable steps.</span>
         <span>FastAPI is listening on port 8000</span>
       </footer>
     </main>

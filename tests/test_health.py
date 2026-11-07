@@ -1,6 +1,6 @@
 from fastapi.testclient import TestClient
 
-from jaarvi_app.main import app
+from app.main import app
 
 
 def test_health_check_returns_ok_status() -> None:

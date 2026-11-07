@@ -4,11 +4,25 @@ A small web app that grows alongside the [learning roadmap](LEARNING_ROADMAP.md)
 
 ## Run locally
 
+Create your local environment file from the safe template:
+
+```bash
+cp .env.example .env
+```
+
+Put real credentials only in `.env`; Git ignores that file. `.env.example` is safe to commit and documents the variable names. The current health-check app does not use `OPENAI_API_KEY` yet.
+
 Start the API in one terminal:
 
 ```bash
 python -m pip install -e ".[test]"
-uvicorn jaarvi_app.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000 --env-file .env
+```
+
+To pass those variables to the Docker container, add `--env-file .env` when creating it:
+
+```bash
+docker run --name jaarvi-api --env-file .env -p 8000:8000 jaarvi-api
 ```
 
 Start the React view in a second terminal (Node.js 24 or newer):

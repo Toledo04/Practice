@@ -1,0 +1,29 @@
+EDGILITY AI DATA INGESTION TEST — FINDINGS AND BLOCKER
+Date: 2026-11-05
+Environment: https://demo.edgilityai.com/ (Reviewer / platform_admin demo account)
+Test data: three synthetic CSV files created for this test; all rows and identifiers are fictional.
+
+FILES PREPARED
+- mock_test_schedule.csv — 3 test flights (TEST-FLT-001 through TEST-FLT-003), with typecode, times, stand, and status fields.
+- mock_test_stands.csv — 3 synthetic stands (TEST-STAND-01 through TEST-STAND-03), with terminal, type, capacity, and status.
+- mock_test_crew.csv — 3 synthetic crew rows (TEST-CRW-001 through TEST-CRW-003), with role, base, qualification, and status.
+
+TEST EXECUTION STATUS
+The requested ingestion and downstream behavior test could not be completed in this browser session. On Data > Data Boundaries, I clicked “Select Files.” The control received focus, but no file chooser became available through the provided browser controls, and there is no supported native file chooser interaction in this session. I did not transmit or ingest any files.
+
+At the end of the attempt, the Data Boundaries table still contained the original six indexed sources only: aircraft_size_bands.csv, crew.csv, skills_matrix.csv, standard_times.csv, stands.csv, and schedule.csv. No mock_test_* source appeared, and the Ingestion Batches page remained at 0 batches. Therefore there are no new confirmed product defects from ingesting these files; ingestion behavior is unverified.
+
+NEXT STEP TO COMPLETE THE TEST
+Use the demo's Data > Data Boundaries > Select Files control in the normal browser UI to select the three mock_test_*.csv files from this workspace. After the files appear in the Active Sources table, run ingestion if required by the UI and verify each source's status/domain and the Ingestion Batches result. Then test Ask with questions that can be checked directly against the rows, for example:
+- How many test flights are in mock_test_schedule?
+- Which test flight is delayed?
+- How many test stands are available?
+- How many crew records have status available?
+- Which schedule rows reference TEST-STAND-01?
+
+After ingestion, continue through Skills, Agents, Workflows, Pipelines, Alerts, Approvals, Monitor, and Platform using only safe/read-only actions. Avoid approving proposals or changing governance/security settings during a test unless a separately authorized sandbox workflow explicitly requires it.
+
+DATA SHAPE LIMITATION
+These CSVs use intuitive aviation-style columns based on the demo's seeded source names and visible sample concepts (schedule, stands, crew, typecode). The application's precise schema/validation requirements were not available before ingestion, so rejection of these files, if it occurs, may indicate a schema mismatch rather than a parser defect. Capture the platform's exact validation response and expected schema before classifying that as a bug.
+
+END
