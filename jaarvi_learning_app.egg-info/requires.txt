@@ -1,4 +1,7 @@
+deepagents<0.8,>=0.7
 fastapi<1.0,>=0.110
+langchain-openai<2.0,>=1.7
+python-dotenv<2.0,>=1.0
 uvicorn[standard]<1.0,>=0.27
 
 [test]

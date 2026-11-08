@@ -3,7 +3,10 @@ Name: jaarvi-learning-app
 Version: 0.1.0
 Summary: A small web app built while learning software engineering fundamentals.
 Requires-Python: >=3.11
+Requires-Dist: deepagents<0.8,>=0.7
 Requires-Dist: fastapi<1.0,>=0.110
+Requires-Dist: langchain-openai<2.0,>=1.7
+Requires-Dist: python-dotenv<2.0,>=1.0
 Requires-Dist: uvicorn[standard]<1.0,>=0.27
 Provides-Extra: test
 Requires-Dist: httpx2; extra == "test"
